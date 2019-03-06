@@ -2,9 +2,9 @@
 
 ## Description
 
-In this project, The goal is to control two rackets to pass the ball constantly across the net. If the agent controlling the racket successfully passes the ball across the net it recieves a reward of +0.1. If the ball hits the ground or crosses the boundaries, the agent recieves a reward of -0.01. Rewards will be maximized if the two agents can pass the ball across.
+In this project, the goal is to control two rackets to pass the ball constantly across the net. If the agent controlling the racket successfully passes the ball across the net it recieves a reward of +0.1. If the ball hits the ground or crosses the boundaries, the agent recieves a reward of -0.01. Rewards will be maximized if the two agents can pass the ball across.
 
-The observation space consists of 8 variables corresponding to the position and velocity of the ball and racket. Each agent receives its own, local observation. Two continuous actions are available, corresponding to movement toward (or away from) the net, and jumping. The task is episodic. Specifically, after each episode, we add up the rewards that each agent received (without discounting), to get a score for each agent. This yields two different scores. We then take the maximum of these two scores. This yields a single score for each episode. The environment is considered solved if the agents get an average score of +0.5 (over 100 consecutive episodes, after taking the maximum over both agents)
+The observation space consists of 8 variables corresponding to the position and velocity of the ball and racket. Each agent receives its own, local observation. Two continuous actions are available, corresponding to movement towards (or away from) the net, and jumping. The task is episodic. Specifically, after each episode, we add up the rewards that each agent received (without discounting), to get a score for each agent. This yields two different scores. We then take the maximum of these two scores. This yields a single score for each episode. The environment is considered solved if the agents get an average score of +0.5 (over 100 consecutive episodes, after taking the maximum over both agents)
 
 ## Algorithm
 
@@ -34,11 +34,14 @@ Both agents were trained using Adam Optimizer with an initial learning rate of 0
 
 ![result](images/result.png)
 
-The above graph shows the maximum reward received by either of the agents and the moving average of the rewards over 100 epochs. We observe that in the early stages of the training the reward was zero for most of the episodes. One reason could be because the network sizes used for both actor and critic were large and thus it took longer to train. 
+The above graph shows the maximum reward received by either of the agents and the moving average of the rewards over 100 episodes. We observe that in the early stages of the training the reward was zero for most of the episodes. One reason could be because the network sizes used for both actor and critic were large and thus it took longer to train. 
 
 Over time, the agents learnt to pass the ball across and get better rewards. As seen in the graph, the agents were able to collaborate and acheive the goal of 0.5 after 7808 episodes. 
 
 
 ## Future Work
 
-As described in the results section, I would like to explore why the agent was getting zero rewards at the begining of training. I would like to train agents with smaller network size and see if this results in lower train time. Secondly, there was a sudden drop in the reward (as seen in the graph around 7300 epoch). I would like to explore why this drop occured i.e. do we see similar behavior with smaller networks or do we see similar behavior with same network with different initialization or was it just a random behavior. I would also like to try out prioritized experience replay and see if it improves the train time. 
+- I would like to train agents with smaller network size and see if this results in faster training i.e. lower episodes to acheive the goal.
+- As described in the results section, I would like to explore why the agent was getting zero rewards at the begining of training. 
+- There was a sudden drop in the reward (as seen in the graph around 7300 epoch). I would like to explore why this drop occured i.e. do we see similar behavior with smaller networks or do we see similar behavior with same network but with different initialization or was it just a random behavior. 
+- I would also like to try out prioritized experience replay and see if it improves the train time. 
